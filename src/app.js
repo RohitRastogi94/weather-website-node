@@ -10,6 +10,9 @@ const forecast = require('./utils/forecast')
 
 const app = express()
 
+// to access port provided by Heroku or else locally
+const port = process.env.PORT || 3000
+
 // Define paths for Express Config
 const publicDirectoryPath = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, '../templates/views')
@@ -101,8 +104,8 @@ app.get('*', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000 ');
+app.listen(port, () => {
+    console.log('Server is up on port '+ port);
 })
 
 //if using app.use with static index.html this will not be called.
